@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: baonguyenyam
-Tags: css, scss, sass, less, stylus, compiler, stylesheet, variables, admin, developer, mixins, functions
+Tags: css, scss, sass, less, stylus, compiler, stylesheet, variables, admin, developer, mixins, functions,
 Requires at least: 4.7
 Tested up to: 5.8
 Stable tag: 1.0.0
