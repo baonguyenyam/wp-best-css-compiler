@@ -62,7 +62,7 @@ class Best_Css_Compiler_Activator {
 				'compiler_title' => 'style', 
 				'compiler_type' => 1, 
 				'compiler_order' => 10, 
-				'compiler_content' => '', 
+				'compiler_content' => ''
 			) 
 		);
 		$wpdb->insert( 
@@ -72,7 +72,7 @@ class Best_Css_Compiler_Activator {
 				'compiler_title' => 'style', 
 				'compiler_type' => 2, 
 				'compiler_order' => 10, 
-				'compiler_content' => '', 
+				'compiler_content' => ''
 			) 
 		);
 	}

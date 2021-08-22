@@ -145,7 +145,7 @@ class Best_Css_Compiler_Admin {
 							'compiler_order' => $groupOrder,
 							'compiler_type' => $groupType
 						),
-						array('compiler_id'=>$id),
+						array('compiler_id'=>$id)
 					);
 					wp_redirect('admin.php?page=best-css-compiler');
 				}
@@ -155,7 +155,7 @@ class Best_Css_Compiler_Admin {
 						array(
 							'compiler_id'=> $id
 						),
-						array('%d'),
+						array('%d')
 					);
 					wp_redirect('admin.php?page=best-css-compiler');
 				}
@@ -167,7 +167,7 @@ class Best_Css_Compiler_Admin {
 							'compiler_order' => $groupOrder,
 							'compiler_type' => $groupType
 						),
-						array( '%s' ),
+						array( '%s' )
 					);
 					wp_redirect('admin.php?page=best-css-compiler');
 				}
@@ -189,7 +189,7 @@ class Best_Css_Compiler_Admin {
 								array(
 									'compiler_content' => $groupContent,
 								),
-								array('compiler_id'=>$id),
+								array('compiler_id'=>$id)
 							);
 							wp_redirect('admin.php?page=best-css-compiler&id='.$id.'&action=editor');
 							die();
@@ -199,7 +199,7 @@ class Best_Css_Compiler_Admin {
 								array(
 									'compiler_content' => $groupContent,
 								),
-								array('compiler_id'=>$id),
+								array('compiler_id'=>$id)
 							);
 							wp_redirect('admin.php?page=best-css-compiler&id='.$id.'&action=editor&showerror='.LOG_ERR);
 							die();
