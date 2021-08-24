@@ -14,6 +14,21 @@ Best CSS Compiler is a CSS preprocessor, a superset of CSS that puts in features
 
 Best CSS Compiler is a CSS preprocessor, a superset of CSS that puts in features that aren’t functional in regular CSS. Best CSS Compiler puts in features to CSS and gets collected into legal CSS
 
+== Installation ==
+
+= From WordPress backend =
+
+1. Navigate to Plugins -> Add new.
+2. Click the button "Upload Plugin" next to "Add plugins" title.
+3. Upload the downloaded zip file and activate it.
+
+= Direct upload =
+
+1. Upload the downloaded zip file into your `wp-content/plugins/` folder.
+2. Unzip the uploaded zip file.
+3. Navigate to Plugins menu on your WordPress admin area.
+4. Activate this plugin.
+
 == Screenshots ==
 
 The screenshot is stored in the /assets directory.
