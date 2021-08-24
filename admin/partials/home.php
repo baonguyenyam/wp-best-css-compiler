@@ -15,10 +15,10 @@
 <div class="wrap csscompiler">
     <div id="wp-content-editor-tools" class="wp-heading">
         <div class="alignleft">
-            <h1 style="padding: 0"><?php echo esc_html__('SCSS/CSS Code', BEST_CSS_COMPILER_DOMAIN )?></h1>
+            <h1 style="padding: 0"><?php echo esc_html__('SCSS/CSS Code', 'best-css-compiler' )?></h1>
         </div>
         <div class="alignright">
-            <a href="admin.php?page=best-css-compiler&action=add" class="button button-primary"><span><?php echo esc_html__('Add New', BEST_CSS_COMPILER_DOMAIN );?></span> <span class="dashicons dashicons-plus"></span></a>
+            <a href="admin.php?page=best-css-compiler&action=add" class="button button-primary"><span><?php echo esc_html__('Add New', 'best-css-compiler' );?></span> <span class="dashicons dashicons-plus"></span></a>
         </div>
         <div class="clear"></div>
         <hr>
@@ -30,13 +30,13 @@
             echo '<table class="compiler-table">';
             echo '<thead>
             <tr>
-            <td>'.esc_html__('Name', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="150">'.esc_html__('Hash', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="50">'.esc_html__('Output', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="50">'.esc_html__('Position', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="50">'.esc_html__('Type', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="20">'.esc_html__('Edit', BEST_CSS_COMPILER_DOMAIN ).'</td>
-            <td width="20">'.esc_html__('Delete', BEST_CSS_COMPILER_DOMAIN ).'</td>
+            <td>'.esc_html__('Name', 'best-css-compiler' ).'</td>
+            <td width="150">'.esc_html__('Hash', 'best-css-compiler' ).'</td>
+            <td width="50">'.esc_html__('Output', 'best-css-compiler' ).'</td>
+            <td width="50">'.esc_html__('Position', 'best-css-compiler' ).'</td>
+            <td width="50">'.esc_html__('Type', 'best-css-compiler' ).'</td>
+            <td width="20">'.esc_html__('Edit', 'best-css-compiler' ).'</td>
+            <td width="20">'.esc_html__('Delete', 'best-css-compiler' ).'</td>
             </tr>
             </thead>';
             foreach ( $resultsGroup as $item ) {
@@ -51,9 +51,9 @@
                 <td><a href="<?php echo content_url();?>/compiler/<?php echo esc_attr($item->compiler_title); ?>-<?php echo esc_attr($item->compiler_id)?>.css" target="_blank"><strong><?php echo esc_attr($item->compiler_title); ?>.css</strong></a></td>
                 <td><strong><?php echo esc_attr($item->compiler_order); ?></strong></td>
                 <td class="<?php echo (esc_attr($item->compiler_type) == 1) ? 'admin-lift-compiler-text-danger' : ''; ?>"><?php echo (esc_attr($item->compiler_type) == 1) ? 'SCSS' : 'CSS'; ?></td>
-                <td class="text-center"><a href="admin.php?page=best-css-compiler&id=<?php echo esc_attr($item->compiler_id)?>&action=edit"><?php echo esc_html__('Edit', BEST_CSS_COMPILER_DOMAIN )?></a>
+                <td class="text-center"><a href="admin.php?page=best-css-compiler&id=<?php echo esc_attr($item->compiler_id)?>&action=edit"><?php echo esc_html__('Edit', 'best-css-compiler' )?></a>
                 </td>
-                <td class="text-center"><a href="admin.php?page=best-css-compiler&id=<?php echo esc_attr($item->compiler_id)?>&action=delete" onclick="return confirm('<?php echo esc_html__('Are you sure?', BEST_CSS_COMPILER_DOMAIN )?>')"><?php echo esc_html__('Delete', BEST_CSS_COMPILER_DOMAIN )?></a>
+                <td class="text-center"><a href="admin.php?page=best-css-compiler&id=<?php echo esc_attr($item->compiler_id)?>&action=delete" onclick="return confirm('<?php echo esc_html__('Are you sure?', 'best-css-compiler' )?>')"><?php echo esc_html__('Delete', 'best-css-compiler' )?></a>
                 </td>
             </tr>
             <div class="clear"></div>
@@ -62,7 +62,7 @@
             echo '</table>';
         } else {
         ?>
-            <div class="alert"><p><?php echo esc_html__('No data found.', BEST_CSS_COMPILER_DOMAIN ); ?></p></div>
+            <div class="alert"><p><?php echo esc_html__('No data found.', 'best-css-compiler' ); ?></p></div>
         <?php } ?>
 
     </div>

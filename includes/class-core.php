@@ -58,7 +58,7 @@ class Best_Css_Compiler {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		$this->cssCompiler['domain'] = BEST_CSS_COMPILER_DOMAIN;
+		$this->cssCompiler['domain'] = 'best-css-compiler';
 		$this->cssCompiler['nicename'] = BEST_CSS_COMPILER_NICENAME;
 		$this->cssCompiler['prefix'] = BEST_CSS_COMPILER_PREFIX;
 		$this->cssCompiler['version'] = BEST_CSS_COMPILER_VERSION;
@@ -145,6 +145,7 @@ class Best_Css_Compiler {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'codemirror_enqueue_scripts' );
 
 	}
 

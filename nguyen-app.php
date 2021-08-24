@@ -28,7 +28,6 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BEST_CSS_COMPILER_DOMAIN', 'best-css-compiler' );
 define( 'BEST_CSS_COMPILER_NICENAME', 'Best CSS Compiler' );
 define( 'BEST_CSS_COMPILER_PREFIX', 'best_css_compiler' );
 define( 'BEST_CSS_COMPILER_VERSION', '1.0.0' );

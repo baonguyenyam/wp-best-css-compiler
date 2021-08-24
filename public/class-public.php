@@ -136,8 +136,7 @@ class Best_Css_Compiler_Public {
 				$file = $wp_filesystem->wp_content_dir() . 'compiler/'.$result->compiler_title.'-'.$result->compiler_id.'.css';
 				if($wp_filesystem->get_contents($file)) {
 					$data = $wp_filesystem->get_contents($file);
-					echo "<style>".$wp_filesystem->get_contents($file)."</style>";
-					// add_action('wp_head', array( $this, '__bestCssCompilerChangeLogo'), 99999);
+					echo "<style>".esc_html($wp_filesystem->get_contents($file))."</style>";
 				}
 			}
 		}
@@ -163,7 +162,7 @@ class Best_Css_Compiler_Public {
 					$file_content .= $wp_filesystem->get_contents($file);
 				}
 			}
-			echo "<style>".$file_content."</style>";
+			echo "<style>".esc_html($file_content)."</style>";
 		}
 
 
@@ -222,10 +221,6 @@ class Best_Css_Compiler_Public {
 			}
 		}
 	}
-
-	// public function __bestCssCompilerChangeLogo() {
-	// 	echo "<style>".$this->data."</style>";
-	// }
 
 }
 

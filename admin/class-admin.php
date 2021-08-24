@@ -58,7 +58,7 @@ class Best_Css_Compiler_Admin {
 
 	public function __compiler_boxesadd_setting_link( $links, $file ) {
 		if( $file === 'wp-best-css-compiler/nguyen-app.php' ){
-			$link = '<a href="'.admin_url('admin.php?page=crb_carbon_fields_container_compiler_settings.php').'">'.esc_html__('Settings', BEST_CSS_COMPILER_DOMAIN ).'</a>';
+			$link = '<a href="'.admin_url('admin.php?page=crb_carbon_fields_container_compiler_settings.php').'">'.esc_html__('Settings', 'best-css-compiler' ).'</a>';
 			array_unshift( $links, $link ); 
 		}
 		return $links;
@@ -84,11 +84,17 @@ class Best_Css_Compiler_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->cssCompiler['domain'] .'-codemirror', plugin_dir_url( __DIR__ ) . 'assets/codemirror/lib/codemirror.css', array(), $this->cssCompiler['version'], 'all' );
-		wp_enqueue_style( $this->cssCompiler['domain'] .'-codemirrortheme', plugin_dir_url( __DIR__ ) . 'assets/codemirror/theme/monokai.css', array(), $this->cssCompiler['version'], 'all' );
-		wp_enqueue_style( $this->cssCompiler['domain'] .'-codemirrorhint', plugin_dir_url( __DIR__ ) . 'assets/codemirror/addon/hint/show-hint.css', array(), $this->cssCompiler['version'], 'all' );
+		wp_enqueue_style( $this->cssCompiler['domain'] .'-codemirrortheme', plugin_dir_url( __FILE__ ) . 'css/monokai.css', array(), $this->cssCompiler['version'], 'all' );
+		wp_enqueue_style( $this->cssCompiler['domain'] .'-codemirrorhint', plugin_dir_url( __FILE__ ) . 'css/show-hint.css', array(), $this->cssCompiler['version'], 'all' );
 		wp_enqueue_style( $this->cssCompiler['domain'], plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->cssCompiler['version'], 'all' );
 
+	}
+
+	public function codemirror_enqueue_scripts() {
+		$cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
+		wp_localize_script('jquery', 'cm_settings', $cm_settings);
+		wp_enqueue_script('wp-theme-plugin-editor');
+		wp_enqueue_style('wp-codemirror');
 	}
 
 	/**
@@ -110,12 +116,6 @@ class Best_Css_Compiler_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirror', plugin_dir_url( __DIR__ ) . 'assets/codemirror/lib/codemirror.js', array( 'jquery' ), $this->cssCompiler['version'], false );
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirrorbracke', plugin_dir_url( __DIR__ ) . 'assets/codemirror/addon/edit/matchbrackets.js', array( 'jquery' ), $this->cssCompiler['version'], false );
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirrormode', plugin_dir_url( __DIR__ ) . 'assets/codemirror/mode/css/css.js', array( 'jquery' ), $this->cssCompiler['version'], false );
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirrorhint', plugin_dir_url( __DIR__ ) . 'assets/codemirror/addon/hint/show-hint.js', array( 'jquery' ), $this->cssCompiler['version'], false );
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirrorcss', plugin_dir_url( __DIR__ ) . 'assets/codemirror/addon/hint/css-hint.js', array( 'jquery' ), $this->cssCompiler['version'], false );
-		wp_enqueue_script( $this->cssCompiler['domain'] .'-codemirrorcssline', plugin_dir_url( __DIR__ ) . 'assets/codemirror/addon/selection/active-line.js', array( 'jquery' ), $this->cssCompiler['version'], false );
 		wp_enqueue_script( $this->cssCompiler['domain'], plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->cssCompiler['version'], false );
 
 	}
@@ -213,17 +213,17 @@ class Best_Css_Compiler_Admin {
 
 
 	public function ___addPluginAdminMenu() {
-		add_menu_page(  $this->cssCompiler['nicename'],  esc_html__( 'CSS Compiler', BEST_CSS_COMPILER_DOMAIN ) , 'administrator', $this->cssCompiler['domain'], array( $this, '___displayPluginAdminDashboard' ), 'dashicons-editor-code', 30 );
+		add_menu_page(  $this->cssCompiler['nicename'],  esc_html__( 'CSS Compiler', 'best-css-compiler' ) , 'administrator', $this->cssCompiler['domain'], array( $this, '___displayPluginAdminDashboard' ), 'dashicons-editor-code', 30 );
 	}
 	public function ___displayPluginAdminDashboard() {
 		require_once plugin_dir_path( __FILE__ ) . 'partials/admin-display.php';
 	}
 
 	public function ___app_option_attach_theme_options() {
-		$basic_options_container =  Container::make( 'theme_options', esc_html__( 'Compiler Settings', BEST_CSS_COMPILER_DOMAIN ) )
+		$basic_options_container =  Container::make( 'theme_options', esc_html__( 'Compiler Settings', 'best-css-compiler' ) )
 		->set_page_parent(  $this->cssCompiler['domain'] )
-			->add_tab( esc_html__( 'Output Settings', BEST_CSS_COMPILER_DOMAIN ), self::__compilerApp() )
-			->add_tab( esc_html__( 'Copyright', BEST_CSS_COMPILER_DOMAIN ), self::__copyright() )
+			->add_tab( esc_html__( 'Output Settings', 'best-css-compiler' ), self::__compilerApp() )
+			->add_tab( esc_html__( 'Copyright', 'best-css-compiler' ), self::__copyright() )
 			;
 	}
 	
@@ -238,17 +238,17 @@ class Best_Css_Compiler_Admin {
 			Field::make(
 			'checkbox', 
 			'___best_css_compiler_inline',
-			esc_html__('Insert CSS into head tag', BEST_CSS_COMPILER_DOMAIN)
+			esc_html__('Insert CSS into head tag', 'best-css-compiler')
 			)->set_option_value( 'no' ),
 			Field::make(
 				'checkbox', 
 				'___best_css_compiler_concat',
-				esc_html__('Concat CSS', BEST_CSS_COMPILER_DOMAIN)
+				esc_html__('Concat CSS', 'best-css-compiler')
 				)->set_option_value( 'yes' ),
-			Field::make( 'text', '__best_css_compiler_name', esc_html__( 'Concat CSS File name', BEST_CSS_COMPILER_DOMAIN ) )
+			Field::make( 'text', '__best_css_compiler_name', esc_html__( 'Concat CSS File name', 'best-css-compiler' ) )
 			->set_default_value('public')
 			->set_width(50),
-			Field::make( 'text', '__best_css_compiler_position', esc_html__( 'Position', BEST_CSS_COMPILER_DOMAIN ) )
+			Field::make( 'text', '__best_css_compiler_position', esc_html__( 'Position', 'best-css-compiler' ) )
 			->set_default_value('99999999')
 			->set_width(50),
 		);
@@ -259,19 +259,19 @@ class Best_Css_Compiler_Admin {
 		$data = array();
 		$data = array(
 	
-			Field::make( 'html', 'crb_html_2', esc_html__( 'Section Description', BEST_CSS_COMPILER_DOMAIN ) )
+			Field::make( 'html', 'crb_html_2', esc_html__( 'Section Description', 'best-css-compiler' ) )
 					->set_html('
 					
-					<h1>'.esc_html__('Best CSS Compiler', BEST_CSS_COMPILER_DOMAIN ).'</h1>
-					<p>'.esc_html__('Best CSS Compiler is a CSS preprocessor, a superset of CSS that puts in features that aren’t functional in regular CSS. Best CSS Compiler puts in features to CSS and gets collected into legal CSS', BEST_CSS_COMPILER_DOMAIN ).'</p>
+					<h1>'.esc_html__('Best CSS Compiler', 'best-css-compiler' ).'</h1>
+					<p>'.esc_html__('Best CSS Compiler is a CSS preprocessor, a superset of CSS that puts in features that aren’t functional in regular CSS. Best CSS Compiler puts in features to CSS and gets collected into legal CSS', 'best-css-compiler' ).'</p>
 					
 					'),
-					Field::make( 'separator', 'crb_separator_1', esc_html__( 'Copyright', BEST_CSS_COMPILER_DOMAIN ) ),
+					Field::make( 'separator', 'crb_separator_1', esc_html__( 'Copyright', 'best-css-compiler' ) ),
 
-			Field::make( 'html', 'crb_html_1', esc_html__( 'Section Description', BEST_CSS_COMPILER_DOMAIN ) )
+			Field::make( 'html', 'crb_html_1', esc_html__( 'Section Description', 'best-css-compiler' ) )
 					->set_html('
-					<p>'.esc_html__( 'Version ', BEST_CSS_COMPILER_DOMAIN ) . BEST_CSS_COMPILER_VERSION.'</p>
-					<p style="margin-top:0;margin-bottom:0"><strong>'.esc_html__( 'Author', BEST_CSS_COMPILER_DOMAIN ).':</strong> <a href="https://baonguyenyam.github.io/" target="_blank">Nguyen Pham</a></p>
+					<p>'.esc_html__( 'Version ', 'best-css-compiler' ) . BEST_CSS_COMPILER_VERSION.'</p>
+					<p style="margin-top:0;margin-bottom:0"><strong>'.esc_html__( 'Author', 'best-css-compiler' ).':</strong> <a href="https://baonguyenyam.github.io/" target="_blank">Nguyen Pham</a></p>
 					
 					'),
 	
