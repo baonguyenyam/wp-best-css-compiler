@@ -25,7 +25,7 @@ if(isset($_GET['action']) && ($_GET['action'] === 'edit' || $_GET['action'] === 
 
 ?>
 <div class="wrap csscompiler">
-	<h1><?php echo esc_html__('File\'s name', 'best-css-compiler' )?></h1>
+	<h1><?php echo esc_html__('Filename', 'best-css-compiler' )?></h1>
 	<hr>
 	<div class="form-wrap">
 		<form action="<?php echo esc_attr( admin_url('admin-post.php') ); ?>" id="frm" method="post">

@@ -75,7 +75,7 @@ msgid "Author"
 msgstr ""
 
 #: admin/partials/compiler.php:23 
-msgid "File's name"
+msgid "Filename"
 msgstr ""
 
 #: admin/partials/compiler.php:41 
